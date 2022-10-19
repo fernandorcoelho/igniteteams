@@ -1,7 +1,15 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
       "@assets/*": [
@@ -25,6 +33,8 @@
       "@utils/*": [
         "./src/utils/*"
       ]
-    }
-  }
+    },
+    "incremental": true
+  },
+  "exclude": ["node_modules"]
 }
