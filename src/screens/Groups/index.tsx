@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 
+import { Button } from '@components/Button';
 import { GroupCard } from '@components/GroupCard';
 import { Header } from '@components/Header';
 import { Highlight } from '@components/Highlight';
@@ -9,7 +10,7 @@ import { ListEmpty } from '@components/ListEmpty';
 import * as S from './styles';
 
 export function Groups() {
-  const [groups, setGroups] = React.useState<string[]>([]);
+  const [groups, setGroups] = React.useState<string[]>(['Fernando']);
 
   return (
     <S.Container>
@@ -26,6 +27,8 @@ export function Groups() {
           <ListEmpty message="Que tal cadastrar a primeira turma?" />
         )}
       />
+
+      <Button title="Criar nova turma" />
     </S.Container>
   );
 }
