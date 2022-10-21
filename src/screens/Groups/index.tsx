@@ -6,18 +6,34 @@ import { GroupCard } from '@components/GroupCard';
 import { Header } from '@components/Header';
 import { Highlight } from '@components/Highlight';
 import { ListEmpty } from '@components/ListEmpty';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { getAllGroups } from '@storage/group/getAllGroups';
 
 import * as S from './styles';
 
-export function Groups(props) {
-  const [groups, setGroups] = React.useState<string[]>(['Fernando']);
+export function Groups() {
+  const [groups, setGroups] = React.useState<string[]>([]);
 
   const navigation = useNavigation();
 
   function handleNewGroup() {
     navigation.navigate('new');
   }
+
+  async function fetchGroups() {
+    try {
+      const data = await getAllGroups();
+      setGroups(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useFocusEffect(
+    React.useCallback(() => {
+      fetchGroups();
+    }, [])
+  );
 
   return (
     <S.Container>
