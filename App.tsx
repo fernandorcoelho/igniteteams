@@ -4,9 +4,7 @@ import {
   Roboto_400Regular,
   Roboto_700Bold
 } from '@expo-google-fonts/roboto';
-import { Groups } from '@screens/Groups';
-// import { NewGroup } from '@screens/NewGroup';
-// import { Players } from '@screens/Players';
+import { Routes } from '@routes/index';
 import theme from '@theme/index';
 import { StatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components/native';
@@ -17,7 +15,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="light" />
-      {fontsLoaded ? <Groups /> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   );
 }
