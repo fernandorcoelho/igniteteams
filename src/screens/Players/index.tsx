@@ -44,6 +44,7 @@ export function Players() {
 
     try {
       await addPlayerByGroup(newPlayer, group);
+      fetchPlayersByTeam();
     } catch (error) {
       if (error instanceof AppError) {
         Alert.alert('Nova pessoa', error.message);
@@ -64,6 +65,10 @@ export function Players() {
       );
     }
   }
+
+  React.useEffect(() => {
+    fetchPlayersByTeam();
+  }, [team]);
 
   return (
     <S.Container>
@@ -97,10 +102,10 @@ export function Players() {
 
       <FlatList
         data={players}
-        keyExtractor={(item) => item}
+        keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
           <PlayerCard
-            name={item}
+            name={item.name}
             onRemove={() => {
               return;
             }}
